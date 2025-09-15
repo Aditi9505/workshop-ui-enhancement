@@ -15,10 +15,7 @@ After:
 ![IMG-20250915-WA0011](https://github.com/user-attachments/assets/956d3688-ec45-4e60-93b1-609423abcdfa)
 ![IMG-20250915-WA0012](https://github.com/user-attachments/assets/c9b38cb3-ff7c-44d3-a21a-96907973cacf)
 ![IMG-20250915-WA0013](https://github.com/user-attachments/assets/784d09f9-132e-40fa-9eee-51c7cad79ff4)
-![IMG-20250915-WA0014](https://github.com/user-attachments/assets/dac49ba1-b18c-4253-9fb5-f75b743a5d41)
-
-
-
+![picture](https://github.com/user-attachments/assets/cac49419-b5af-4c24-b593-6fa17a1c6d95)
 
 
 💡 Design Principles and Approach
