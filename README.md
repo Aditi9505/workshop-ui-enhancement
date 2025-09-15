@@ -12,6 +12,14 @@ Before:
 ![IMG-20250914-WA0016](https://github.com/user-attachments/assets/cc883bf3-0dae-4122-9518-3b228f181209)
 
 After:
+![IMG-20250915-WA0011](https://github.com/user-attachments/assets/956d3688-ec45-4e60-93b1-609423abcdfa)
+![IMG-20250915-WA0012](https://github.com/user-attachments/assets/c9b38cb3-ff7c-44d3-a21a-96907973cacf)
+![IMG-20250915-WA0013](https://github.com/user-attachments/assets/784d09f9-132e-40fa-9eee-51c7cad79ff4)
+![IMG-20250915-WA0014](https://github.com/user-attachments/assets/dac49ba1-b18c-4253-9fb5-f75b743a5d41)
+
+
+
+
 
 💡 Design Principles and Approach
 My approach was guided by a mobile-first design philosophy and principles of clarity, visual hierarchy, and accessibility. Given that the target audience primarily uses mobile devices, the design prioritizes readability and ease of use on small screens.
@@ -114,43 +122,16 @@ This systematic approach allowed me to successfully modernize the entire front e
 🛠️ Setup Instructions
 To run this project locally, follow these steps:
 
-Clone the repository:
-
-git clone [your_repo_link]
+Clone the repository: git clone [https://github.com/Aditi9505/workshop-ui-enhancement]
 cd [workshop-ui-enhancement]
 
-Install Python dependencies:
+Install Python dependencies: pip install -r requirements.txt
 
-pip install -r requirements.txt
+Set up the database: python manage.py migrate
 
-Set up the database:
+Create a superuser: python manage.py createsuperuser
 
-python manage.py migrate
-
-Create a superuser:
-
-python manage.py createsuperuser
-
-Run the development server:
-
-python manage.py runserver
+Run the development server:python manage.py runserver
 
 The website will be accessible at http://127.0.0.1:8000/]
 
-Install Python dependencies:
-
-pip install -r requirements.txt
-
-Set up the database:
-
-python manage.py migrate
-
-Create a superuser:
-
-python manage.py createsuperuser
-
-Run the development server:
-
-python manage.py runserver
-
-The website will be accessible at http://127.0.0.1:8000/
