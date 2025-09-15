@@ -1,0 +1,48 @@
+{% extends 'workshop_app/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen -mt-16 md:-mt-24">
+    <div class="w-full max-w-md px-6 py-8 bg-white rounded-xl shadow-md">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Sign In</h2>
+        <form class="space-y-6" method="post">
+            {% csrf_token %}
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">{{ error|escape }}</span>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{ error|escape }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="space-y-2">
+                <label for="id_username" class="block text-sm font-medium text-gray-700">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="space-y-2">
+                <label for="id_password" class="block text-sm font-medium text-gray-700">Password</label>
+                {{ form.password }}
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+                Sign in
+            </button>
+        </form>
+        <div class="mt-6 text-sm text-center">
+            <a href="{% url 'workshop_app:register' %}" class="text-blue-600 hover:text-blue-800 transition duration-300">New around here? Sign up</a>
+        </div>
+        <div class="mt-2 text-sm text-center">
+            <a href="{% url 'password_reset' %}" class="text-blue-600 hover:text-blue-800 transition duration-300">Forgot password?</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

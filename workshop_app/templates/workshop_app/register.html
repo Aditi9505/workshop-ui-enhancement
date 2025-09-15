@@ -1,0 +1,42 @@
+{% extends 'workshop_app/base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen -mt-16 md:-mt-24">
+    <div class="w-full max-w-lg px-6 py-8 bg-white rounded-xl shadow-md">
+        <h3 class="text-3xl font-bold text-center text-gray-800 mb-6">Coordinator Registration</h3>
+
+        <form action="" method="post" class="space-y-4">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div class="space-y-1">
+                    <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                        {{ field.label }}
+                        {% if field.field.required %}
+                            <span class="text-red-500">*</span>
+                        {% endif %}
+                    </label>
+                    <div class="mt-1">
+                        {{ field }}
+                    </div>
+                    {% if field.errors %}
+                        <div class="text-red-500 text-sm mt-1">
+                            {% for error in field.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300" type="submit">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

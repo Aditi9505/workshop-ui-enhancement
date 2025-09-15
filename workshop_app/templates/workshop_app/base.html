@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load custom_filters %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            FOSSEE Workshops
+        {% endblock %}
+    </title>
+
+    <!-- Tailwind CSS for a modern, responsive design -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts for Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Toastr for notifications (kept from original) -->
+    <link rel="stylesheet" href="{% static 'workshop_app/css/toastr.min.css' %}">
+    
+    <!-- Scripts for core functionality (kept from original) -->
+    <script src="{% static 'workshop_app/js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'workshop_app/js/toastr.min.js' %}"></script>
+
+    {% block extra-dependencies %}{% endblock %}
+    {% block extra-custom-scripts %}{% endblock %}
+</head>
+
+<body class="bg-gray-100 font-sans">
+    
+    <!-- Header/Navigation Bar -->
+    <nav class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a class="text-2xl font-bold tracking-tight" href="{% url 'workshop_app:index' %}">
+                FOSSEE Workshops
+            </a>
+
+            <!-- Mobile menu button -->
+            <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <!-- Desktop and Mobile Menu -->
+            <div class="hidden md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8" id="mobile-menu">
+                <a class="hover:text-blue-400 transition-colors duration-200" href="/">Home</a>
+                <a class="hover:text-blue-400 transition-colors duration-200" href="{% url 'statistics_app:public' %}">Workshop Statistics</a>
+                
+                {% if user.is_authenticated %}
+                    {% if request.user|has_group:"instructor" %}
+                        <a class="hover:text-blue-400 transition-colors duration-200" href="{% url 'statistics_app:team' %}">Team Statistics</a>
+                    {% endif %}
+                    <a class="hover:text-blue-400 transition-colors duration-200" href="{% url 'workshop_app:propose_workshop' %}">Propose Workshop</a>
+                    <a class="hover:text-blue-400 transition-colors duration-200" href="{% url 'workshop_app:workshop_type_list' %}">Workshop Types</a>
+                    
+                    <!-- User Profile Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1 focus:outline-none">
+                            <span class="material-icons">account_circle</span>
+                            <span>{{ user.get_full_name|title }}</span>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg py-1 hidden group-hover:block">
+                            <a class="block px-4 py-2 hover:bg-gray-200 transition-colors duration-200" href="{% url 'workshop_app:view_own_profile' %}">Profile</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200 transition-colors duration-200" href="{% url 'password_change' %}">Change Password</a>
+                            <a class="block px-4 py-2 hover:bg-gray-200 transition-colors duration-200" href="{% url 'workshop_app:logout' %}">Logout</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Block -->
+    <main class="container mx-auto p-4 mt-16">
+        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+            {% block content %}
+                <h1 class="text-3xl font-bold">Welcome!</h1>
+                <p class="mt-4 text-gray-700">This is a starting template. Start editing other pages to see your new styles in action.</p>
+            {% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+        <div class="container mx-auto">
+            Developed by FOSSEE group, IIT Bombay
+        </div>
+    </footer>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+    
+</body>
+</html>
